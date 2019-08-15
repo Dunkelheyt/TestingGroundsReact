@@ -2,31 +2,50 @@ import React, {Component} from 'react';
 import data from "./data.json";
 
 class YTJson extends React.Component{
+
+  constructor(props){
+    super(props);
+    this.state = {
+      items:[],
+      isLoaded: false,
+    }
+  }
+
+  componentDidMount(){
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res => res.json())
+    .then(json => {
+      this.setState({
+        isLoaded: true,
+        items: json,
+      })
+    });
+  }
   render(){
-    return(
-      <div>
-        <h1>YOUTUBE JSON TEST</h1>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/OVuYIMa5XBw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        {data.map((postDetail, index) =>{
-          return <div class = "clearfix borderscomplete container mb-3">
-          <div class = "row">
-            <div class = "col-sm-4">
-              <img class = "img-thumbnail float-left pull-left mr-2 imgclass" src={postDetail.image} />
-            </div>
 
-            <div class = "col-sm-8">
-              <h1 class="text-center">{postDetail.title}</h1>
-              <p class="text-center lead">{postDetail.info}</p>
-              <p class="text-center lead">{postDetail.id}</p>
-              <p class="text-center lead">{postDetail.info}</p>
-              <p class="text-center lead">{postDetail.id}</p>
-            </div>
+    var {isLoaded, items} = this.state;
 
-          </div>
-          </div>
-        })}
-      </div>
-    )
+    if(!isLoaded){
+      return<div>Loading...</div>;
+    }
+    else {
+      return(
+        <div>
+          <h1>JSON Hosted on Internet</h1>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/OVuYIMa5XBw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <ul>
+
+            {items.map(item => (
+              <li key={item.id}>
+                Name: {item.name}
+              </li>
+            ))}
+
+          </ul>
+        </div>
+      )
+    }
+
   }
 }
 

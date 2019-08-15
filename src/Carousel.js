@@ -1,7 +1,4 @@
 import React, { Component } from "react";
-import logo from "./logo.jpg";
-import logo2 from "./logo2.jpg";
-import logo3 from "./logo3.jpg";
 import placeholder from "./1500800.jpg";
 import placeholder2 from "./12001000.jpg";
 

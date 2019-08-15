@@ -11,9 +11,11 @@ import Carousel from "./Carousel";
 import Panel from './Panel';
 import PanelRight from "./PanelRight";
 import Navbar from "./Navbar";
-import JSONExample from "./JSONExample"
-import JSONExamplePretty from "./JSONExamplePretty"
-import YTJson from "./YTJson"
+import JSONExample from "./JSONExample";
+import JSONExamplePretty from "./JSONExamplePretty";
+import YTJson from "./YTJson";
+import YTComplete from "./YTComplete";
+import JumbotronVideo from "./JumbotronVideo";
 
 class Main extends React.Component {
   render() {
@@ -31,7 +33,9 @@ class Main extends React.Component {
             <li><NavLink to="/navbar">Navbar</NavLink></li>
             <li><NavLink to="/jsonexample">Json Data Example</NavLink></li>
             <li><NavLink to="/jsonexamplepretty">Json Data Example Pretty</NavLink></li>
-            <li><NavLink to="/ytjson">Youtube Json</NavLink></li>
+            <li><NavLink to="/ytjson">Fetch Json from internet</NavLink></li>
+            <li><NavLink to="/jsonyoutube">Json Youtube</NavLink></li>
+            <li><NavLink to="/jumbotronvideo">Jumbotron video</NavLink></li>
           </ul>
           <div className="content">
           <Route exact path="/" component={Home}/>
@@ -44,6 +48,8 @@ class Main extends React.Component {
           <Route path="/jsonexample" component = {JSONExample}/>
           <Route path="/jsonexamplepretty" component = {JSONExamplePretty}/>
           <Route path="/ytjson" component = {YTJson}/>
+          <Route path="/jsonyoutube" component = {YTComplete}/>
+          <Route path="/jumbotronvideo" component = {JumbotronVideo}/>
           </div>
         </div>
     </HashRouter>
